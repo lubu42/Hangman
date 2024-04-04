@@ -1,5 +1,5 @@
 answer = "apple"
-hangman = ""
+hangman = len(answer)
 
 
 while True:
@@ -8,7 +8,16 @@ while True:
 	for i in answer:
 		if i == guess:
 			answer = answer.replace(i, '', 1)
-			print(answer)
+			if answer == "":
+				print("You have won!")
+				exit()
+			print("'" + guess + "'" + " is a correct letter!")
 			break
 		else:
-			
+			hangman = (hangman - 1)
+			if hangman == 0:
+				print("You Lose!")
+				exit()
+			else:
+				print(("You have ") + str(hangman) + (" tries left"))
+				break
